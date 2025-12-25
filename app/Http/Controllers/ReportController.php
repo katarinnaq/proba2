@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class ReportController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $reports = Report::all();
 
@@ -20,12 +20,12 @@ class ReportController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('report.create');
     }
 
-    public function store(ReportStoreRequest $request): Response
+    public function store(ReportStoreRequest $request)
     {
         $report = Report::create($request->validated());
 
@@ -34,21 +34,21 @@ class ReportController extends Controller
         return redirect()->route('reports.index');
     }
 
-    public function show(Request $request, Report $report): Response
+    public function show(Request $request, Report $report)
     {
         return view('report.show', [
             'report' => $report,
         ]);
     }
 
-    public function edit(Request $request, Report $report): Response
+    public function edit(Request $request, Report $report)
     {
         return view('report.edit', [
             'report' => $report,
         ]);
     }
 
-    public function update(ReportUpdateRequest $request, Report $report): Response
+    public function update(ReportUpdateRequest $request, Report $report)
     {
         $report->update($request->validated());
 
@@ -57,7 +57,7 @@ class ReportController extends Controller
         return redirect()->route('reports.index');
     }
 
-    public function destroy(Request $request, Report $report): Response
+    public function destroy(Request $request, Report $report)
     {
         $report->delete();
 
