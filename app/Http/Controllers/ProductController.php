@@ -20,9 +20,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        return view('product.create');
+        $categories = \App\Models\Category::all(); 
+        return view('product.create', compact('categories'));
     }
 
     public function store(ProductStoreRequest $request)
@@ -41,11 +42,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function edit(Request $request, Product $product)
+    public function edit(Product $product)
     {
-        return view('product.edit', [
-            'product' => $product,
-        ]);
+        $categories = \App\Models\Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     public function update(ProductUpdateRequest $request, Product $product)
