@@ -20,7 +20,7 @@ class ProductUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => ['required', 'integer', 'exists:Category,id'],
+            'category_id' => ['required', 'integer', 'exists:categories,id'], 
             'naziv' => ['required', 'string', 'max:150'],
             'opis' => ['nullable', 'string'],
             'tip_vode' => ['required', 'string', 'max:50'],
