@@ -1,0 +1,44 @@
+models:
+  Category:
+    naziv: string:100
+    opis: text nullable
+
+  Product:
+    category_id: id foreign:Category
+    naziv: string:150
+    opis: text nullable
+    tip_vode: string:50
+    ambalaza: string:50
+    cena: decimal:10,2
+
+  Order:
+    korisnik: id foreign:User
+    status: enum:na cekanju,u_obradi,poslata,zavrsena
+    ukupna_cena: decimal:10,2
+
+  Report:
+
+    admin: id foreign:User
+    naziv: string:150
+    period_od: date
+    period_do: date
+    datum_kreiranja: date
+
+controllers:
+  Category:
+    resource
+
+  Product:
+    resource
+
+  Order:
+    resource
+
+  Report:
+    resource
+
+seeders:
+  Category
+  Product
+  Order
+  Report
