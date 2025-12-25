@@ -1,2 +1,54 @@
+created:
+    - app/Http/Controllers/CategoryController.php
+    - app/Http/Controllers/ProductController.php
+    - app/Http/Controllers/OrderController.php
+    - app/Http/Controllers/ReportController.php
+    - database/factories/CategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/ReportFactory.php
+    - database/migrations/2025_12_25_095917_create_categories_table.php
+    - database/migrations/2025_12_25_095918_create_products_table.php
+    - database/migrations/2025_12_25_095919_create_orders_table.php
+    - database/migrations/2025_12_25_095920_create_reports_table.php
+    - app/Models/Category.php
+    - app/Models/Product.php
+    - app/Models/Order.php
+    - app/Models/Report.php
+    - database/seeders/CategoryProductOrderReportSeeder.php
+    - tests/Feature/Http/Controllers/CategoryControllerTest.php
+    - tests/Feature/Http/Controllers/ProductControllerTest.php
+    - tests/Feature/Http/Controllers/OrderControllerTest.php
+    - tests/Feature/Http/Controllers/ReportControllerTest.php
+    - app/Http/Requests/CategoryStoreRequest.php
+    - app/Http/Requests/CategoryUpdateRequest.php
+    - app/Http/Requests/ProductStoreRequest.php
+    - app/Http/Requests/ProductUpdateRequest.php
+    - app/Http/Requests/OrderStoreRequest.php
+    - app/Http/Requests/OrderUpdateRequest.php
+    - app/Http/Requests/ReportStoreRequest.php
+    - app/Http/Requests/ReportUpdateRequest.php
+    - resources/views/category/index.blade.php
+    - resources/views/category/create.blade.php
+    - resources/views/category/show.blade.php
+    - resources/views/category/edit.blade.php
+    - resources/views/product/index.blade.php
+    - resources/views/product/create.blade.php
+    - resources/views/product/show.blade.php
+    - resources/views/product/edit.blade.php
+    - resources/views/order/index.blade.php
+    - resources/views/order/create.blade.php
+    - resources/views/order/show.blade.php
+    - resources/views/order/edit.blade.php
+    - resources/views/report/index.blade.php
+    - resources/views/report/create.blade.php
+    - resources/views/report/show.blade.php
+    - resources/views/report/edit.blade.php
+updated:
+    - routes/web.php
 models:
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    Category: { naziv: 'string:100', opis: 'text nullable' }
+    Product: { category_id: 'id foreign:Category', naziv: 'string:150', opis: 'text nullable', tip_vode: 'string:50', ambalaza: 'string:50', cena: 'decimal:10,2' }
+    Order: { korisnik: 'id foreign:User', status: 'enum:na cekanju,u_obradi,poslata,zavrsena', ukupna_cena: 'decimal:10,2' }
+    Report: { admin: 'id foreign:User', naziv: 'string:150', period_od: date, period_do: date, datum_kreiranja: date }
